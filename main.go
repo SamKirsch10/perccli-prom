@@ -22,7 +22,7 @@ var (
 	esxiPasswd string
 	esxiHost   string
 
-	disksOnline = promauto.NewCounter(prometheus.CounterOpts{
+	disksOnline = promauto.NewGauge(prometheus.GaugeOpts{
 		Name: "esxi_physical_disks_online_total",
 		Help: "The total number of disks with status Online",
 	})
@@ -56,7 +56,7 @@ func metrics() {
 
 			out := runCMD("cd /opt/lsi/perccli/ && ./perccli /c0/e32/sall show | tail -n +14")
 			diskMap := parseOutput(out)
-
+			disksOnline.Set(0)
 			for _, disk := range diskMap {
 				if disk["status"] == "Onln" {
 					log.Println(disk)
