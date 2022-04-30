@@ -31,7 +31,7 @@ type CmdStatus struct {
 	Description string
 }
 
-type ControllerResponse struct {
+type ControllerDriveResponse struct {
 	Controllers []struct {
 		CommandStatus CmdStatus `json:"Command Status"`
 		ResponseData  struct {
@@ -45,4 +45,14 @@ type ControllerRebuildResponse struct {
 		CommandStatus CmdStatus     `json:"Command Status"`
 		ResponseData  []RebuildInfo `json:"Response Data"`
 	}
+}
+
+type EsxiDatastoreInfo struct {
+	Free       float64
+	MountPoint string
+	Mounted    bool
+	Size       float64
+	Type       string
+	UUID       string
+	VolumeName string
 }
