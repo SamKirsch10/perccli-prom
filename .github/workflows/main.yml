@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [ "master" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    name: build-artifact
+    
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Go environment
+        uses: actions/setup-go@v3.2.0
+        with:
+          go-version-file: ./go.mod
+      
+      - name: Build
+        run: |
+          go version
+          go build
+          ls -la
+          
+
