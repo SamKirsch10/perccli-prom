@@ -25,7 +25,15 @@ jobs:
       - name: Build
         run: |
           go version
-          go build
+          go build 
           ls -la
+
+      - name: Tag release w/ artifact
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.TOKEN }}"
+          prerelease: false
+          files: |
+            perccli-prom
           
 
