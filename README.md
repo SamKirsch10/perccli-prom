@@ -2,6 +2,9 @@
 A simple golang binary that will run some commands on my ESXI host via [PERC-CLI](https://www.dell.com/support/kbdoc/en-us/000177280/how-to-use-the-poweredge-raid-controller-perc-command-line-interface-cli-utility-to-manage-your-raid-controller). Since it's difficult to get much to run on the specialized kernel that runs on ESXi hosts, the commands are run over ssh.
 
 
+## Building
+[Github Actions](https://github.com/SamKirsch10/perccli-prom/actions) builds this repo and will post the binary to the released version. See [the workflow yaml](https://github.com/SamKirsch10/perccli-prom/blob/master/.github/workflows/main.yml) for the steps that build, set a version, and set the release.
+
 ## PERC CLI
 For my setup, all disks are under Controller 0 - Enclosure 32 (not sure why...). Current output of a show all for my disks looks something like:
 ```
