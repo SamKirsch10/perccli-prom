@@ -42,7 +42,7 @@ jobs:
         with:
           repo_token: "${{ secrets.TOKEN }}"
           prerelease: false
-          automatic_release_tag: ${{ auto_tagger.outputs.new_tag }}
+          automatic_release_tag: ${{ steps.auto_tagger.outputs.new_tag }}
           files: |
             perccli-prom
           
