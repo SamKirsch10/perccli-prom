@@ -16,9 +16,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: '0'
       
-      - name: Autotag
-        uses: DanySK/semver-autotag-action@master
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.36.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          WITH_V: true
+        id: auto_tagger
       
       - name: Setup Go environment
         uses: actions/setup-go@v3.2.0
@@ -36,6 +42,7 @@ jobs:
         with:
           repo_token: "${{ secrets.TOKEN }}"
           prerelease: false
+          automatic_release_tag: ${{ auto_tagger.outputs.new_tag }}
           files: |
             perccli-prom
           
