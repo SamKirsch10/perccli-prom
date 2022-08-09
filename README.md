@@ -25,4 +25,6 @@ EID:Slt DID State DG      Size Intf Med SED PI SeSz Model                   Sp T
 ------------------------------------------------------------------------------------
 ```
 
-The code uses regex to grab each piece (since disk models unfortunately can have unkown amount of spaces, it gets weird towards the end there...).
+The code uses regex to grab each piece (since disk models unfortunately can have unkown amount of spaces, it gets weird towards the end there...). 
+
+** UPDATE** There is actually a json output for the perc cli cmd :) . MUCH easier to parse.
